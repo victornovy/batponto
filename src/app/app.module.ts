@@ -7,10 +7,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 
-//import * as firebase from 'firebase';
 import { AngularFireModule } from 'angularfire2';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseConfig } from '../config/environment';
+import { BatPonto } from '../services/batponto.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { firebaseConfig } from '../config/environment';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFirestoreModule
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -32,6 +32,7 @@ import { firebaseConfig } from '../config/environment';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BatPonto
   ]
 })
 export class AppModule {}
