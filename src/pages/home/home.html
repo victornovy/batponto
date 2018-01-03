@@ -1,17 +1,17 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>
+            Bat - Ponto
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-  <li *ngFor="let item of items | async">
-      {{ item }}
-  </li>
+    <ion-card>
+        <ion-list>
+            <button ion-item *ngFor="let pt of pontosKeys" (click)="openPonto(pt);">
+                {{ pt }}
+            </button>
+        </ion-list>
+    </ion-card>
 </ion-content>

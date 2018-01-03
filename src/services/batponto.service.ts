@@ -7,10 +7,10 @@ import { environment } from "../config/environment";
 export class BatPonto {
 
     private static dbName: string = environment.dbName;
-    public items: Observable<any[]> = new Observable();
+    public pontos: Observable<any> = new Observable();
 
     constructor(public db: AngularFireDatabase) {
-        this.items = db.list(BatPonto.dbName).valueChanges();
+        this.pontos = db.object(`${BatPonto.dbName}/pontos`).valueChanges();
     }
 
 }

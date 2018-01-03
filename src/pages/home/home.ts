@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { BatPonto } from '../../services/batponto.service';
 import { Observable } from 'rxjs/Observable';
+import { HoursPage } from '../hours/hours';
 
 @Component({
     selector: 'page-home',
@@ -9,10 +10,17 @@ import { Observable } from 'rxjs/Observable';
 })
 export class HomePage {
 
-    public items: Observable<any[]>;
+    private pontosList: Array<any[]>;
+    public pontosKeys: Array<any>;
 
     constructor(public navCtrl: NavController, public batPonto: BatPonto) {
-        this.items = batPonto.items;
+        batPonto.pontos.subscribe((pontosList) => {
+            this.pontosList = pontosList;
+            this.pontosKeys = Object.keys(pontosList);
+        });
     }
 
+    openPonto(selectedPt) {
+        this.navCtrl.push(HoursPage);
+    }
 }

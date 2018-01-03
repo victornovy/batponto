@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { HoursPage } from '../pages/hours/hours';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -15,7 +16,8 @@ import { BatPonto } from '../services/batponto.service';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    HoursPage
   ],
   imports: [
     BrowserModule,
@@ -26,7 +28,8 @@ import { BatPonto } from '../services/batponto.service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    HoursPage
   ],
   providers: [
     StatusBar,
