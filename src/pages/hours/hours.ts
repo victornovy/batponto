@@ -1,18 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-hours',
-  templateUrl: 'hours.html',
+    selector: 'page-hours',
+    templateUrl: 'hours.html',
 })
-export class HoursPage {
+export class HoursPage implements OnInit {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+    public hoursList: Array<any>;
+    private selectedPonto;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HoursPage');
-  }
+    constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
+    ngOnInit() {
+        this.selectedPonto = this.navParams.get('selectedPonto');
+        this.hoursList = Object.keys(this.selectedPonto);
+    }
+
+    openDetail(selectedHour) {
+        console.log(selectedHour);
+    }
 }

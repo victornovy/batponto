@@ -21,6 +21,6 @@ export class HomePage {
     }
 
     openPonto(selectedPt) {
-        this.navCtrl.push(HoursPage);
+        this.navCtrl.push(HoursPage, { 'selectedPonto' : this.pontosList[selectedPt]});
     }
 }

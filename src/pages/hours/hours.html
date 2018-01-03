@@ -1,18 +1,15 @@
-<!--
-  Generated template for the HoursPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>hours</ion-title>
-  </ion-navbar>
-
+    <ion-navbar>
+        <ion-title>Hours</ion-title>
+    </ion-navbar>
 </ion-header>
 
-
 <ion-content padding>
-
+    <ion-card>
+        <ion-list>
+            <button ion-item *ngFor="let hr of hoursList" (click)="openDetail(hr);">
+                {{ hr }}
+            </button>
+        </ion-list>
+    </ion-card>
 </ion-content>
