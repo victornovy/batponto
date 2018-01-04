@@ -12,12 +12,14 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { firebaseConfig } from '../config/environment';
 import { BatPonto } from '../services/batponto.service';
+import { DetailsPage } from "../pages/details/details";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    HoursPage
+    HoursPage,
+    DetailsPage
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { BatPonto } from '../services/batponto.service';
   entryComponents: [
     MyApp,
     HomePage,
-    HoursPage
+    HoursPage,
+    DetailsPage
   ],
   providers: [
     StatusBar,

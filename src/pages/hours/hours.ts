@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { DetailsPage } from "../details/details";
 
 @IonicPage()
 @Component({
@@ -19,6 +20,6 @@ export class HoursPage implements OnInit {
     }
 
     openDetail(selectedHour) {
-        console.log(selectedHour);
+        this.navCtrl.push(DetailsPage, { selectedHour: this.selectedPonto[selectedHour] })
     }
 }
