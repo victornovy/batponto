@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import { BatPonto } from '../../services/batponto.service';
+import { BatPontoProvider } from '../../providers/batponto/batponto.service';
 import { Observable } from 'rxjs/Observable';
 import { HoursPage } from '../hours/hours';
-import * as m from 'moment';
 
 @Component({
     selector: 'page-home',
@@ -14,8 +13,8 @@ export class HomePage {
     private pontosList: Array<any[]>;
     public pontosKeys: Array<any>;
 
-    constructor(public navCtrl: NavController, public batPonto: BatPonto) {
-        batPonto.pontos.subscribe((pontosList) => {
+    constructor(public navCtrl: NavController, public batPontoProvider: BatPontoProvider) {
+        batPontoProvider.pontos.subscribe((pontosList) => {
             this.pontosList = pontosList;
             this.pontosKeys = Object.keys(pontosList);
         });

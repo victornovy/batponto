@@ -10,7 +10,7 @@
     <ion-card>
         <ion-list>
             <button ion-item *ngFor="let pt of pontosKeys" (click)="openPonto(pt);">
-                {{ pt }}
+                {{ pt | date }}
             </button>
         </ion-list>
     </ion-card>

@@ -8,7 +8,7 @@
     <ion-card>
         <ion-list>
             <button ion-item *ngFor="let hr of hoursList" (click)="openDetail(hr);">
-                {{ hr }}
+                {{ hr | hour}}
             </button>
         </ion-list>
     </ion-card>

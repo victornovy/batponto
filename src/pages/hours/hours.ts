@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { DetailsPage } from "../details/details";
-import * as m from 'moment';
 
 @IonicPage()
 @Component({

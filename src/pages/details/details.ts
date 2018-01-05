@@ -13,7 +13,6 @@ export class DetailsPage {
 
     ngOnInit() {
         this.selectedHour = this.navParams.get('selectedHour');
-        console.log(this.selectedHour);
     }
 
     dismiss() {
