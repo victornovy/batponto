@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { BatPonto } from '../../services/batponto.service';
 import { Observable } from 'rxjs/Observable';
 import { HoursPage } from '../hours/hours';
+import * as m from 'moment';
 
 @Component({
     selector: 'page-home',

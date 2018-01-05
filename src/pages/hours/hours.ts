@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { DetailsPage } from "../details/details";
+import * as m from 'moment';
 
 @IonicPage()
 @Component({
@@ -12,14 +13,19 @@ export class HoursPage implements OnInit {
     public hoursList: Array<any>;
     private selectedPonto;
 
-    constructor(public navCtrl: NavController, public navParams: NavParams) { }
+    constructor(
+        public navCtrl: NavController,
+        public navParams: NavParams,
+        public modalCtrl: ModalController
+    ) { }
 
     ngOnInit() {
         this.selectedPonto = this.navParams.get('selectedPonto');
-        this.hoursList = Object.keys(this.selectedPonto);
+        this.hoursList = Object.keys(this.selectedPonto)
     }
 
     openDetail(selectedHour) {
-        this.navCtrl.push(DetailsPage, { selectedHour: this.selectedPonto[selectedHour] })
+        let modal = this.modalCtrl.create(DetailsPage, { selectedHour: this.selectedPonto[selectedHour] });
+        modal.present();
     }
 }

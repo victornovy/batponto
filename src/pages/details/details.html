@@ -1,11 +1,25 @@
 <ion-header>
     <ion-navbar>
         <ion-title>Details</ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss()">
+                <span ion-text color="primary" showWhen="ios">Cancel</span>
+                <ion-icon name="close" showWhen="android, windows, core"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <p>{{ selectedHour.date }}</p>
-    <p>{{ selectedHour.hour }}</p>
-    <p>{{ selectedHour.description }}</p>
+    <ion-list>
+        <ion-item>
+            Date: {{ selectedHour.date }}
+        </ion-item>
+        <ion-item>
+            Hour: {{ selectedHour.hour }}
+        </ion-item>
+        <ion-item *ngIf="!!selectedHour.description">
+            Description: {{ selectedHour.description }}
+        </ion-item>
+    </ion-list>
 </ion-content>
