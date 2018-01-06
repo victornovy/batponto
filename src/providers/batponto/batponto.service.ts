@@ -11,24 +11,20 @@ export class BatPontoProvider {
     public pontos: Observable<any> = new Observable();
 
     constructor(public db: AngularFireDatabase) {
-        this.pontos = this.getDbObject().valueChanges();
+        this.pontos = this.getDbObject('pontos').valueChanges();
     }
 
-    private getDbObject() {
-        return this.db.object(`${BatPontoProvider.DBNAME}/pontos`);
+    private getDbObject(route: string) {
+        return this.db.object(`${BatPontoProvider.DBNAME}/${route}`);
     }
 
     savePonto(dateTime) {
         let date = m(dateTime).format('YYYYMMDD');
         let hour = m(dateTime).format('HHmm');
 
-        this.getDbObject().set({
-            [date]: {
-                [hour]: {
-                    date: m(dateTime).format('DD/MM/YYYY'),
-                    hour: m(dateTime).format('HH:mm')
-                }
-            }
+        this.getDbObject(`pontos/${date}/${hour}`).update({
+            date: m(dateTime).format('DD/MM/YYYY'),
+            hour: m(dateTime).format('HH:mm')
         });
     }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from 'ionic-angular';
 import * as m from 'moment';
 import { BatPontoProvider } from '../../providers/batponto/batponto.service';
 
@@ -10,7 +11,7 @@ export class AddPontoComponent implements OnInit {
 
     public dateTime;
 
-    constructor(private batPontoProvider: BatPontoProvider) { }
+    constructor(public navCtrl: NavController, private batPontoProvider: BatPontoProvider) { }
 
     ngOnInit() {
         this.dateTime = m().format();
@@ -18,5 +19,6 @@ export class AddPontoComponent implements OnInit {
 
     savePonto() {
         this.batPontoProvider.savePonto(this.dateTime);
+        this.navCtrl.pop();
     }
 }
