@@ -27,4 +27,16 @@ export class BatPontoProvider {
             hour: m(dateTime).format('HH:mm')
         });
     }
+
+    removeDate(date: string) {
+        date = m(date).format('YYYYMMDD');
+        this.getDbObject(`pontos/${date}`).remove();
+    }
+
+    removeHour(date: string, hour: string) {
+        date = m(date).format('YYYYMMDD');
+        hour = m(hour).format('HHmm');
+
+        this.getDbObject(`pontos/${date}/${hour}`).remove();
+    }
 }
