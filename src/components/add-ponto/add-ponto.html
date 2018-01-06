@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Add Ponto
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label>Date Time</ion-label>
+            <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="dateTime"></ion-datetime>
+        </ion-item>
+    </ion-list>
+    <button ion-button full (click)="savePonto();">Save</button>
+</ion-content>

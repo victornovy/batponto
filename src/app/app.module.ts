@@ -22,6 +22,9 @@ import { DatePipe } from '../pipes/date/date';
 // Providers
 import { BatPontoProvider } from '../providers/batponto/batponto.service';
 
+// Components
+import { AddPontoComponent } from '../components/add-ponto/add-ponto';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -29,7 +32,8 @@ import { BatPontoProvider } from '../providers/batponto/batponto.service';
     HoursPage,
     DetailsPage,
     HourPipe,
-    DatePipe
+    DatePipe,
+    AddPontoComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ import { BatPontoProvider } from '../providers/batponto/batponto.service';
     MyApp,
     HomePage,
     HoursPage,
-    DetailsPage
+    DetailsPage,
+    AddPontoComponent,
   ],
   providers: [
     StatusBar,
