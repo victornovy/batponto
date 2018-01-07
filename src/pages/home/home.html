@@ -14,7 +14,7 @@
                     <h2>{{ pt | date }}</h2>
                 </ion-item>
                 <ion-item-options side="right">
-                    <button ion-button color="danger">
+                    <button ion-button color="danger" (click)="deletePonto(pt)">
                         <ion-icon name="trash"></ion-icon>
                         Delete
                     </button>

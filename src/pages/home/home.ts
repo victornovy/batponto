@@ -28,4 +28,8 @@ export class HomePage {
     addPonto() {
         this.navCtrl.push(AddPontoComponent);
     }
+
+    deletePonto(pt: string) {
+        this.batPontoProvider.removeDate(pt);
+    }
 }
