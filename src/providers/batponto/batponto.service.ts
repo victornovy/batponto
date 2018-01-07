@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "angularfire2/database";
-import { Observable } from "rxjs/Observable";
 import { environment } from "../../config/environment";
 import * as m from 'moment';
 
@@ -8,14 +7,19 @@ import * as m from 'moment';
 export class BatPontoProvider {
 
     private static DBNAME: string = environment.dbName;
-    public pontos: Observable<any> = new Observable();
 
-    constructor(public db: AngularFireDatabase) {
-        this.pontos = this.getDbObject('pontos').valueChanges();
-    }
+    constructor(public db: AngularFireDatabase) { }
 
     private getDbObject(route: string) {
         return this.db.object(`${BatPontoProvider.DBNAME}/${route}`);
+    }
+
+    getPontosList() {
+        return this.getDbObject('pontos').valueChanges();
+    }
+
+    getHourList(date: string) {
+        return this.getDbObject(`pontos/${date}`).valueChanges();
     }
 
     savePonto(dateTime) {
@@ -29,14 +33,10 @@ export class BatPontoProvider {
     }
 
     removeDate(date: string) {
-        date = m(date).format('YYYYMMDD');
         this.getDbObject(`pontos/${date}`).remove();
     }
 
     removeHour(date: string, hour: string) {
-        date = m(date).format('YYYYMMDD');
-        hour = m(hour).format('HHmm');
-
         this.getDbObject(`pontos/${date}/${hour}`).remove();
     }
 }

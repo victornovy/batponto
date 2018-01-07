@@ -11,18 +11,25 @@ import { AddPontoComponent } from '../../components/add-ponto/add-ponto';
 })
 export class HomePage {
 
-    private pontosList: Array<any[]>;
+    private pontosList;
     public pontosKeys: Array<any>;
 
-    constructor(public navCtrl: NavController, public batPontoProvider: BatPontoProvider) {
-        batPontoProvider.pontos.subscribe((pontosList) => {
+    constructor(
+        public navCtrl: NavController,
+        public batPontoProvider: BatPontoProvider
+    ) {
+        batPontoProvider.getPontosList().subscribe((pontosList) => {
             this.pontosList = pontosList;
             this.pontosKeys = !!pontosList ? Object.keys(pontosList) : [];
         });
     }
 
     openPonto(selectedPt) {
-        this.navCtrl.push(HoursPage, { 'selectedPonto' : this.pontosList[selectedPt]});
+        const obj = {
+            'hourList': this.pontosList[selectedPt],
+            'date': selectedPt
+        };
+        this.navCtrl.push(HoursPage, obj);
     }
 
     addPonto() {

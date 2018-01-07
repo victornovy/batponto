@@ -1,15 +1,23 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>Hours</ion-title>
+        <ion-title>Hours - {{ selectedDate | date }}</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content padding>
     <ion-card>
         <ion-list>
-            <button ion-item *ngFor="let hr of hoursList" (click)="openDetail(hr);">
-                {{ hr | hour}}
-            </button>
+            <ion-item-sliding *ngFor="let hr of hoursList">
+                <ion-item (click)="openDetail(hr);">
+                     <h2>{{ hr | hour}}</h2>
+                </ion-item>
+                <ion-item-options>
+                    <button ion-button color="danger" (click)="deleteHour(hr);">
+                        <ion-icon name="trash"></ion-icon>
+                        Delete
+                    </button>
+                </ion-item-options>
+            </ion-item-sliding>
         </ion-list>
     </ion-card>
 </ion-content>
