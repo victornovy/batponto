@@ -11,9 +11,11 @@ import { firebaseConfig } from '../config/environment';
 
 // Pages
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+import { PontosPage } from '../pages/pontos/pontos';
 import { HoursPage } from '../pages/hours/hours';
 import { DetailsPage } from "../pages/details/details";
+import { HomePage } from "../pages/home/home";
+import { SettingsPage } from "../pages/settings/settings";
 
 // Pipes
 import { HourPipe } from '../pipes/hour/hour';
@@ -29,11 +31,13 @@ import { AddPontoComponent } from '../components/add-ponto/add-ponto';
   declarations: [
     MyApp,
     HomePage,
+    PontosPage,
     HoursPage,
     DetailsPage,
     HourPipe,
     DatePipe,
-    AddPontoComponent
+    AddPontoComponent,
+    SettingsPage,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +49,11 @@ import { AddPontoComponent } from '../components/add-ponto/add-ponto';
   entryComponents: [
     MyApp,
     HomePage,
+    PontosPage,
     HoursPage,
     DetailsPage,
     AddPontoComponent,
+    SettingsPage,
   ],
   providers: [
     StatusBar,

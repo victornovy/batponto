@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Bat - Ponto
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-list>
+            <ion-item-sliding *ngFor="let pt of pontosKeys">
+                <ion-item (click)="openPonto(pt);">
+                    <h2>{{ pt | date }}</h2>
+                </ion-item>
+                <ion-item-options side="right">
+                    <button ion-button color="danger" (click)="deletePonto(pt)">
+                        <ion-icon name="trash"></ion-icon>
+                        Delete
+                    </button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+    </ion-card>
+
+    <ion-fab right bottom>
+        <button ion-fab color="primary" (click)="addPonto();">
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>
