@@ -18,6 +18,9 @@
         <ion-item>
             Hour: {{ selectedHour.hour }}
         </ion-item>
+        <ion-item>
+            Type: {{ selectedHour.tpPonto === 'E' ? 'Entrada' : 'Saida' }}
+        </ion-item>
         <ion-item *ngIf="!!selectedHour.description">
             Description: {{ selectedHour.description }}
         </ion-item>

@@ -28,7 +28,7 @@ import { BatPontoProvider } from '../providers/batponto/batponto.service';
 import { AddPontoComponent } from '../components/add-ponto/add-ponto';
 
 @NgModule({
-  declarations: [
+    declarations: [
     MyApp,
     HomePage,
     PontosPage,
@@ -38,15 +38,17 @@ import { AddPontoComponent } from '../components/add-ponto/add-ponto';
     DatePipe,
     AddPontoComponent,
     SettingsPage,
-  ],
-  imports: [
+    ],
+    imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+        tabsHideOnSubPages: true
+    }),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [
+    ],
+    bootstrap: [IonicApp],
+    entryComponents: [
     MyApp,
     HomePage,
     PontosPage,
@@ -54,12 +56,12 @@ import { AddPontoComponent } from '../components/add-ponto/add-ponto';
     DetailsPage,
     AddPontoComponent,
     SettingsPage,
-  ],
-  providers: [
+    ],
+    providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BatPontoProvider,
-  ]
+    ]
 })
 export class AppModule {}

@@ -10,6 +10,8 @@ import { BatPontoProvider } from '../../providers/batponto/batponto.service';
 export class AddPontoComponent implements OnInit {
 
     public dateTime;
+    public tpPonto: boolean;
+    public description: string;
 
     constructor(public navCtrl: NavController, private batPontoProvider: BatPontoProvider) { }
 
@@ -18,7 +20,7 @@ export class AddPontoComponent implements OnInit {
     }
 
     savePonto() {
-        this.batPontoProvider.savePonto(this.dateTime);
+        this.batPontoProvider.savePonto(this.dateTime, this.tpPonto, this.description);
         this.navCtrl.pop();
     }
 }

@@ -12,6 +12,14 @@
             <ion-label>Date Time</ion-label>
             <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="dateTime"></ion-datetime>
         </ion-item>
+        <ion-item>
+            <ion-label>Entrada</ion-label>
+            <ion-toggle [(ngModel)]="tpPonto"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Description</ion-label>
+            <ion-textarea [(ngModel)]="description" rows="2"></ion-textarea>
+        </ion-item>
     </ion-list>
     <button ion-button full (click)="savePonto();">Save</button>
 </ion-content>

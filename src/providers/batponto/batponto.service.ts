@@ -22,13 +22,15 @@ export class BatPontoProvider {
         return this.getDbObject(`pontos/${date}`).valueChanges();
     }
 
-    savePonto(dateTime) {
+    savePonto(dateTime: string, tpPonto: boolean, description: string) {
         let date = m(dateTime).format('YYYYMMDD');
         let hour = m(dateTime).format('HHmm');
 
         this.getDbObject(`pontos/${date}/${hour}`).update({
             date: m(dateTime).format('DD/MM/YYYY'),
-            hour: m(dateTime).format('HH:mm')
+            hour: m(dateTime).format('HH:mm'),
+            tpPonto: tpPonto ? 'E' : 'S',
+            description: description,
         });
     }
 
