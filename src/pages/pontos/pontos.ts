@@ -29,6 +29,10 @@ export class PontosPage {
             return 0;
         }
 
+        const eList = this.batPontoProvider.filterPontosByType(this.pontosList, 'E');
+        const sList = this.batPontoProvider.filterPontosByType(this.pontosList, "S");
+        this.batPontoProvider.calculateHours(eList, sList);
+
         return 0;
     }
 
