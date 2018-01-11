@@ -23,6 +23,15 @@ export class PontosPage {
         });
     }
 
+    get totHours() {
+
+        if (!this.pontosList) {
+            return 0;
+        }
+
+        return 0;
+    }
+
     openPonto(selectedPt) {
         const obj = {
             'hourList': this.pontosList[selectedPt],
