@@ -24,12 +24,33 @@ export class BatPontoProvider {
 
     filterPontosByType(pontosList: Array<any>, tpPonto: string) {
         let newList = [];
-        _.pickBy(pontosList, hourList => {
+        let pontosKeys = Object.keys(pontosList);
+        pontosKeys.forEach(pontoKey => {
+            let hourList = pontosList[pontoKey];
+            let hourKeys = Object.keys(hourList);
+            hourKeys.forEach(detailKey => {
+                const detail = hourList[detailKey];
+                newList.push(detail);
+                //const hour = m(detail.hour, 'HH:mm').format('HHmm');
+            });
+        });
+
+        newList.sort((a, b) => {
+            return m(a.hour, "HH:mm").format("HHmm") - m(b.hour, "HH:mm").format("HHmm");
+        });
+
+        /*_.pickBy(pontosList, hourList => {
             let filtered = _.filter(hourList, detail => {
                 return !!detail.tpPonto && detail.tpPonto === tpPonto;
             });
             _.merge(newList, filtered);
-        });
+        });*/
+        // _.pickBy(pontosList, hourList => {
+        //     let filtered = _.sortBy(hourList, [{hour: -1}]);
+        //     console.log(filtered);
+        //     //_.merge(newList, filtered);
+        //     //console.log(filtered);
+        // });
         return newList;
     }
 
