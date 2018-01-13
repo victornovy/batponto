@@ -5,5 +5,15 @@
 </ion-header>
 
 <ion-content padding>
-
+    <form novalidate [formGroup]="settingsForm">
+        <ion-list>
+            <ion-item>
+                <ion-label>Qt Horas Trab.</ion-label>
+                <ion-datetime displayFormat="HH:mm" formControlName="qtWorkHours"></ion-datetime>
+            </ion-item>
+        </ion-list>
+        <button ion-button full (click)="saveSettings();"
+            [disabled]="settingsForm.untouched || settingsForm.invalid">Save
+        </button>
+    </form>
 </ion-content>

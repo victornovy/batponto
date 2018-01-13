@@ -24,14 +24,11 @@ export class PontosPage {
     }
 
     get totHours() {
-
         if (!this.pontosList) {
             return 0;
         }
 
-        const eList = this.batPontoProvider.calculateExtraHours(this.pontosList);
-
-        return eList;
+        return this.batPontoProvider.calculateExtraHours(this.pontosList);
     }
 
     openPonto(selectedPt) {

@@ -27,6 +27,7 @@ import { BatPontoProvider } from '../providers/batponto/batponto.service';
 // Components
 import { AddPontoComponent } from '../components/add-ponto/add-ponto';
 import { HourDecimalPipe } from '../pipes/hour-decimal/hour-decimal';
+import { SettingsProvider } from '../providers/settings/settings';
 
 @NgModule({
     declarations: [
@@ -64,6 +65,7 @@ import { HourDecimalPipe } from '../pipes/hour-decimal/hour-decimal';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BatPontoProvider,
+    SettingsProvider,
     ]
 })
 export class AppModule {}

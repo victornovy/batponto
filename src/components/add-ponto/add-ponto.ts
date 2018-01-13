@@ -20,7 +20,7 @@ export class AddPontoComponent implements OnInit {
     }
 
     savePonto() {
-        this.batPontoProvider.savePonto(this.dateTime, this.tpPonto, this.description || '');
+        this.batPontoProvider.savePonto(this.dateTime, this.tpPonto, this.description);
         this.navCtrl.pop();
     }
 }

@@ -2,12 +2,22 @@ import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "angularfire2/database";
 import { environment } from "../../config/environment";
 import * as m from 'moment';
+import { SettingsProvider } from "../settings/settings";
 
 @Injectable()
 export class BatPontoProvider {
     private static DBNAME: string = environment.dbName;
+    private info: any = {};
 
-    constructor(public db: AngularFireDatabase) {}
+    constructor(
+        public db: AngularFireDatabase,
+        private settingsProvider: SettingsProvider
+    ) {
+        settingsProvider.getInfo()
+            .subscribe((info) => {
+                this.info = info;
+            });
+    }
 
     private getDbObject(route: string) {
         return this.db.object(`${BatPontoProvider.DBNAME}/${route}`);
@@ -21,8 +31,8 @@ export class BatPontoProvider {
         return this.getDbObject(`pontos/${date}`).valueChanges();
     }
 
-    getBaseHour() {
-        return "08:00";
+    getBaseHour(): string {
+        return 'qtWorkHours' in this.info ? this.info.qtWorkHours : "0:00";
     }
 
     getBaseHourMin() {
@@ -79,7 +89,7 @@ export class BatPontoProvider {
         return totHours / 60;
     }
 
-    savePonto(dateTime: string, tpPonto: boolean, description: string) {
+    savePonto(dateTime: string, tpPonto: boolean, description: string = '') {
         let date = m(dateTime).format("YYYYMMDD");
         let hour = m(dateTime).format("HHmm");
 
