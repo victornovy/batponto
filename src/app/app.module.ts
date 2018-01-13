@@ -26,6 +26,7 @@ import { BatPontoProvider } from '../providers/batponto/batponto.service';
 
 // Components
 import { AddPontoComponent } from '../components/add-ponto/add-ponto';
+import { HourDecimalPipe } from '../pipes/hour-decimal/hour-decimal';
 
 @NgModule({
     declarations: [
@@ -38,6 +39,7 @@ import { AddPontoComponent } from '../components/add-ponto/add-ponto';
     DatePipe,
     AddPontoComponent,
     SettingsPage,
+    HourDecimalPipe,
     ],
     imports: [
     BrowserModule,
