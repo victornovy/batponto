@@ -46,11 +46,12 @@ export class BatPontoProvider {
         return dateType;
     }
 
-    private calculateTotWorkHoursByDay(datesIn: Array<any>, dateOut: Array<any>) {
+    private calculateTotWorkHoursByDay(datesIn: Array<any>, datesOut: Array<any>) {
         let totWorkHours = 0;
-        for (let i = 0; i < datesIn.length; i++) {
+        let length = datesIn.length > datesOut.length ? datesOut.length : datesIn.length;
+        for (let i = 0; i < length; i++) {
             const hoursIn = datesIn[i];
-            const hoursOut = dateOut[i];
+            const hoursOut = datesOut[i];
             const diffHour = hoursOut.diff(hoursIn, "minutes");
             totWorkHours += diffHour;
         }
