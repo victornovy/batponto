@@ -11,7 +11,7 @@ export class BatPontoProvider {
 
     constructor(
         public db: AngularFireDatabase,
-        private settingsProvider: SettingsProvider
+        settingsProvider: SettingsProvider
     ) {
         settingsProvider.getInfo()
             .subscribe((info) => {
