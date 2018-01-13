@@ -29,11 +29,9 @@ export class PontosPage {
             return 0;
         }
 
-        const eList = this.batPontoProvider.filterPontosByType(this.pontosList, 'E');
-        const sList = this.batPontoProvider.filterPontosByType(this.pontosList, "S");
-        this.batPontoProvider.calculateHours(eList, sList);
+        const eList = this.batPontoProvider.calculateExtraHours(this.pontosList);
 
-        return 0;
+        return eList;
     }
 
     openPonto(selectedPt) {

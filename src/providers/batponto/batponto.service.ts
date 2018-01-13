@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "angularfire2/database";
 import { environment } from "../../config/environment";
 import * as m from 'moment';
-import * as _ from "lodash";
 
 @Injectable()
 export class BatPontoProvider {
@@ -22,45 +21,61 @@ export class BatPontoProvider {
         return this.getDbObject(`pontos/${date}`).valueChanges();
     }
 
-    filterPontosByType(pontosList: Array<any>, tpPonto: string) {
-        let newList = [];
-        let pontosKeys = Object.keys(pontosList);
-        pontosKeys.forEach(pontoKey => {
-            let hourList = pontosList[pontoKey];
-            let hourKeys = Object.keys(hourList);
-            hourKeys.forEach(detailKey => {
-                const detail = hourList[detailKey];
-                newList.push(detail);
-                //const hour = m(detail.hour, 'HH:mm').format('HHmm');
-            });
-        });
-
-        newList.sort((a, b) => {
-            return m(a.hour, "HH:mm").format("HHmm") - m(b.hour, "HH:mm").format("HHmm");
-        });
-
-        /*_.pickBy(pontosList, hourList => {
-            let filtered = _.filter(hourList, detail => {
-                return !!detail.tpPonto && detail.tpPonto === tpPonto;
-            });
-            _.merge(newList, filtered);
-        });*/
-        // _.pickBy(pontosList, hourList => {
-        //     let filtered = _.sortBy(hourList, [{hour: -1}]);
-        //     console.log(filtered);
-        //     //_.merge(newList, filtered);
-        //     //console.log(filtered);
-        // });
-        return newList;
+    getBaseHour() {
+        return "08:00";
     }
 
-    calculateHours(listTypeE: Array<any>, listTypeS: Array<any>) {
-        _.reduce(listTypeE, (tot, item) => {
-            let a = m(item.hour, 'HH:mm');
-            return tot + a;
+    getBaseHourMin() {
+        let baseHourArr = this.getBaseHour().split(':');
+        return Number(baseHourArr[0]) * 60 + Number(baseHourArr[1]);
+    }
+
+    private getHoursByType(hoursList) {
+        let hourKeys = Object.keys(hoursList);
+        let dateType = { in: [], out: [] };
+        hourKeys.forEach(detailKey => {
+            const detail = hoursList[detailKey];
+            const date = m(`${detail.date} ${detail.hour}`);
+
+            if (detail.tpPonto === "E")
+                dateType.in.push(date);
+            else
+                dateType.out.push(date);
+        });
+
+        return dateType;
+    }
+
+    private calculateTotWorkHoursByDay(datesIn: Array<any>, dateOut: Array<any>) {
+        let totWorkHours = 0;
+        for (let i = 0; i < datesIn.length; i++) {
+            const hoursIn = datesIn[i];
+            const hoursOut = dateOut[i];
+            const diffHour = hoursOut.diff(hoursIn, "minutes");
+            totWorkHours += diffHour;
+        }
+        return totWorkHours;
+    }
+
+    calculateExtraHours(pontosList: Array<any>) {
+        const baseHourMin = this.getBaseHourMin();
+        const pontosKeys = Object.keys(pontosList);
+        let diffHourByDay = [];
+        let totHours = 0;
+
+        pontosKeys.forEach(pontoKey => {
+            let dateType = this.getHoursByType(pontosList[pontoKey]);
+            let totWorkHours = this.calculateTotWorkHoursByDay(dateType.in, dateType.out);
+
+            const diff = totWorkHours - baseHourMin;
+            diff > 0 && diffHourByDay.push(diff);
+        });
+
+        totHours = diffHourByDay.reduce((vrAnt, vrAt) => {
+          return vrAnt + vrAt;
         }, 0);
 
-        //console.log(listTypeE, listTypeS);
+        return totHours / 60;
     }
 
     savePonto(dateTime: string, tpPonto: boolean, description: string) {
