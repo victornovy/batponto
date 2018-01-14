@@ -27,7 +27,7 @@ export class SettingsPage implements OnInit {
         this.settingsProvider.getInfo()
             .subscribe((resp: any) => {
                 this.settingsForm.setValue({
-                    qtWorkHours: resp.qtWorkHours
+                    qtWorkHours: resp ? resp.qtWorkHours : "00:00"
                 });
             });
     }

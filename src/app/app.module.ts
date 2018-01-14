@@ -31,6 +31,7 @@ import { Facebook } from '@ionic-native/facebook';
 
 // Components
 import { AddPontoComponent } from '../components/add-ponto/add-ponto';
+import { LoginProvider } from '../providers/login/login';
 
 @NgModule({
     declarations: [
@@ -73,6 +74,7 @@ import { AddPontoComponent } from '../components/add-ponto/add-ponto';
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         BatPontoProvider,
         SettingsProvider,
+    LoginProvider,
     ]
 })
 export class AppModule {}

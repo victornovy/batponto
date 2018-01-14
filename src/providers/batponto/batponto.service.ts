@@ -3,6 +3,7 @@ import { AngularFireDatabase } from "angularfire2/database";
 import { environment } from "../../config/environment";
 import * as m from 'moment';
 import { SettingsProvider } from "../settings/settings";
+import { LoginProvider } from "../login/login";
 
 @Injectable()
 export class BatPontoProvider {
@@ -10,8 +11,9 @@ export class BatPontoProvider {
     private info: any = {};
 
     constructor(
-        public db: AngularFireDatabase,
-        settingsProvider: SettingsProvider
+        private db: AngularFireDatabase,
+        settingsProvider: SettingsProvider,
+        private loginProvider: LoginProvider
     ) {
         settingsProvider.getInfo()
             .subscribe((info) => {
@@ -20,7 +22,8 @@ export class BatPontoProvider {
     }
 
     private getDbObject(route: string) {
-        return this.db.object(`${BatPontoProvider.DBNAME}/${route}`);
+        const userid = this.loginProvider.getUserId();
+        return this.db.object(`${BatPontoProvider.DBNAME}/${userid}/${route}`);
     }
 
     getPontosList() {
@@ -32,7 +35,7 @@ export class BatPontoProvider {
     }
 
     getBaseHour(): string {
-        return 'qtWorkHours' in this.info ? this.info.qtWorkHours : "0:00";
+        return !!this.info && 'qtWorkHours' in this.info ? this.info.qtWorkHours : "00:00";
     }
 
     getBaseHourMin() {
