@@ -25,13 +25,14 @@ import { DatePipe } from '../pipes/date/date';
 import { HourDecimalPipe } from '../pipes/hour-decimal/hour-decimal';
 
 // Providers
+import { Facebook } from '@ionic-native/facebook';
 import { BatPontoProvider } from '../providers/batponto/batponto.service';
 import { SettingsProvider } from '../providers/settings/settings';
-import { Facebook } from '@ionic-native/facebook';
+import { LoginProvider } from '../providers/login/login';
 
 // Components
 import { AddPontoComponent } from '../components/add-ponto/add-ponto';
-import { LoginProvider } from '../providers/login/login';
+import { LogoutComponent } from '../components/logout/logout';
 
 @NgModule({
     declarations: [
@@ -46,6 +47,7 @@ import { LoginProvider } from '../providers/login/login';
         AddPontoComponent,
         SettingsPage,
         HourDecimalPipe,
+        LogoutComponent,
     ],
     imports: [
         BrowserModule,
@@ -74,7 +76,7 @@ import { LoginProvider } from '../providers/login/login';
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         BatPontoProvider,
         SettingsProvider,
-    LoginProvider,
+        LoginProvider,
     ]
 })
 export class AppModule {}

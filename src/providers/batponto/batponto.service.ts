@@ -48,7 +48,7 @@ export class BatPontoProvider {
         let dateType = { in: [], out: [] };
         hourKeys.forEach(detailKey => {
             const detail = hoursList[detailKey];
-            const date = m(`${detail.date} ${detail.hour}`);
+            const date = m(`${detail.date} ${detail.hour}`, 'DD/MM/YYYY HH:mm:ii');
 
             if (detail.tpPonto === "E")
                 dateType.in.push(date);
@@ -66,6 +66,7 @@ export class BatPontoProvider {
             const hoursIn = datesIn[i];
             const hoursOut = datesOut[i];
             const diffHour = hoursOut.diff(hoursIn, "minutes");
+
             totWorkHours += diffHour;
         }
         return totWorkHours;
@@ -84,7 +85,6 @@ export class BatPontoProvider {
             const diff = totWorkHours - baseHourMin;
             diff > 0 && diffHourByDay.push(diff);
         });
-
         totHours = diffHourByDay.reduce((vrAnt, vrAt) => {
           return vrAnt + vrAt;
         }, 0);
