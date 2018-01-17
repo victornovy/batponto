@@ -1,13 +1,55 @@
 {
-  "name": "Bat Ponto",
-  "short_name": "Bat Ponto",
-  "start_url": "index.html",
-  "display": "standalone",
-  "icons": [{
-    "src": "assets/imgs/splash.png",
-    "sizes": "512x512",
-    "type": "image/png"
-  }],
-  "background_color": "#4e8ef7",
-  "theme_color": "#4e8ef7"
+    "name": "Bat Ponto",
+    "short_name": "Bat Ponto",
+    "start_url": "index.html",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "assets/img/touch/logo.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/img/touch/logo.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/img/touch/logo.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/img/touch/logo.png",
+            "type": "image/png",
+            "sizes": "128x128"
+        },
+        {
+            "src": "assets/img/touch/logo.png",
+            "type": "image/png",
+            "sizes": "152x152"
+        },
+        {
+            "src": "assets/img/touch/logo.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        },
+        {
+            "src": "assets/img/touch/logo.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "assets/img/touch/logo.png",
+            "type": "image/png",
+            "sizes": "256x256"
+        },
+        {
+            "src": "assets/img/touch/logo.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "background_color": "#4e8ef7",
+    "theme_color": "#4e8ef7"
 }
